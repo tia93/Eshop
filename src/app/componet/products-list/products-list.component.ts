@@ -38,4 +38,7 @@ getAllProducts(){
   })
 }
 
+sortByPrice(){
+  this.products = this.products.sort((a,b)=> a.price - b.price);
+  }
 }
