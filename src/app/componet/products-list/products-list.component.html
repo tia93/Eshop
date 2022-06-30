@@ -1,11 +1,11 @@
 <div class="conatiner"  >
     <div>
         <input id="search_input" type="text"><button (click)="search()">okey</button>
-        <select name="" id="">
-            <option value="">tutti i prodotti</option>
-            <option value="">tavole</option>
-            <option value="">mute</option>
-            <option value="">abbigliamento</option>
+        <select (change)="displayCategory()" id="selector">
+            <option value="all">tutti i prodotti</option>
+            <option value="tavole">tavole</option>
+            <option value="mute">mute</option>
+            <option value="abbigliamento">abbigliamento</option>
         </select>
         <button (click)="sortByPrice()">ordina per prezzo</button>
         <button (click)="sortByname()">ordina alfabetico</button>

@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/services/product/product.service';
 })
 export class ProductsListComponent implements OnInit {
 
-  public products: Product [] = [];
+  public products: Product[] = [];
 
   constructor(private pServ: ProductService) { }
 
@@ -17,28 +17,41 @@ export class ProductsListComponent implements OnInit {
     this.getAllProducts();
   }
 
-  search(){
+  search() {
     const input = document.getElementById('search_input') as HTMLInputElement;
     const searchString = input!.value.trim().toLowerCase();
     this.pServ.getProducts(searchString).subscribe({
       next: products => this.products = products,
       error: err => console.log(err)
-      
-      
     })
   }
 
-
-getAllProducts(){
-  this.pServ.getProducts().subscribe({
-    next: products => this.products = products,
-    error: err => console.log(err)
-    
-    
-  })
-}
-
-sortByPrice(){
-  this.products = this.products.sort((a,b)=> a.price - b.price);
+  getAllProducts() {
+    this.pServ.getProducts().subscribe({
+      next: products => this.products = products,
+      error: err => console.log(err)
+    })
   }
+
+  sortByPrice() {
+    this.products = this.products.sort((a, b) => a.price - b.price);
+  }
+
+  sortByname() {
+    this.products = this.products.sort((a, b) => a.name.localeCompare(b.name) ) 
+  }
+
+  displayCategory(){
+    const selector = document.getElementById('selector') as HTMLSelectElement;
+    const value = selector.value
+    if(value === 'all') this.getAllProducts()
+    else {
+      this.pServ.getProducts(undefined, value).subscribe({
+        next: products => this.products = products,
+        error: err => console.log(err)
+      })
+    }
+  }
+
 }
+
