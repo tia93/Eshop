@@ -1,3 +1,15 @@
-<div class="conatiner" >
+<div class="conatiner"  >
+    <div>
+        <input id="search_input" type="text"><button (click)="search()">okey</button>
+        <select name="" id="">
+            <option value="">tutti i prodotti</option>
+            <option value="">tavole</option>
+            <option value="">mute</option>
+            <option value="">abbigliamento</option>
+        </select>
+        <button>ordina per prezzo</button>
+        <button>ordina alfabetico</button>
+        <button (click)="getAllProducts()">annulla</button>
+    </div>
 <app-product-cards *ngFor="let product of products" [selectedProduct]='product' ></app-product-cards>
 </div>

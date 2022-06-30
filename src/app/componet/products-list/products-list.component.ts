@@ -14,12 +14,28 @@ export class ProductsListComponent implements OnInit {
   constructor(private pServ: ProductService) { }
 
   ngOnInit(): void {
-    this.pServ.getProducts().subscribe({
+    this.getAllProducts();
+  }
+
+  search(){
+    const input = document.getElementById('search_input') as HTMLInputElement;
+    const searchString = input!.value.trim().toLowerCase();
+    this.pServ.getProducts(searchString).subscribe({
       next: products => this.products = products,
       error: err => console.log(err)
       
       
     })
   }
+
+
+getAllProducts(){
+  this.pServ.getProducts().subscribe({
+    next: products => this.products = products,
+    error: err => console.log(err)
+    
+    
+  })
+}
 
 }

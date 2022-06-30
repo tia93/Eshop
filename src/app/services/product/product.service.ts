@@ -11,8 +11,17 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts():Observable<Product[]> {
-    return this.http.get<Product[]>(this.BASE_URL)
+  getProducts(searchString?: string):Observable<Product[]> {
+    let url = this.BASE_URL;
+    if(searchString){
+      url = this.BASE_URL + '?name=' + searchString;
+    }
+    return this.http.get<Product[]>(url);
+
+  }
+  getProductsById(id: string):Observable<Product> {
+    const url = this.BASE_URL + '/' + id
+    return this.http.get<Product>(url)
 
   }
 }

@@ -1,4 +1,4 @@
-<div class="container" *ngIf="selectedProduct">
+<div routerLink="/product/{{selectedProduct.id}}" class="container" *ngIf="selectedProduct">
     <img class="img" src="{{selectedProduct.imageUrl}}" alt="">
     <div class="data">
         <span>{{selectedProduct.name}}</span>
