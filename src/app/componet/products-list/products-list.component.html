@@ -1,14 +1,14 @@
 <div class="conatiner"  >
     <div>
-        <input id="search_input" type="text"><button (click)="search()">okey</button>
-        <select (change)="displayCategory()" id="selector">
-            <option value="all">tutti i prodotti</option>
+        <input [(ngModel)]="searchString" id="search_input" type="text"><button (click)="search()">okey</button>
+        <select [(ngModel)]="selectedCategory" name="" (change)="filterByCategory()" id="category-selector">
+            <option value="">tutti i prodotti</option>
             <option value="tavole">tavole</option>
             <option value="mute">mute</option>
             <option value="abbigliamento">abbigliamento</option>
         </select>
-        <button (click)="sortByPrice()">ordina per prezzo</button>
-        <button (click)="sortByname()">ordina alfabetico</button>
+        <button (click)="orderByPrice()">ordina per prezzo</button>
+        <button (click)="orderByname()">ordina alfabetico</button>
         <button (click)="getAllProducts()">annulla</button>
     </div>
 <app-product-cards *ngFor="let product of products" [selectedProduct]='product' ></app-product-cards>

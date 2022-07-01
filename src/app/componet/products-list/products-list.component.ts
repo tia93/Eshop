@@ -10,6 +10,8 @@ import { ProductService } from 'src/app/services/product/product.service';
 export class ProductsListComponent implements OnInit {
 
   public products: Product[] = [];
+  public searchString = ''
+  public selectedCategory = ''
 
   constructor(private pServ: ProductService) { }
 
@@ -18,9 +20,10 @@ export class ProductsListComponent implements OnInit {
   }
 
   search() {
-    const input = document.getElementById('search_input') as HTMLInputElement;
-    const searchString = input!.value.trim().toLowerCase();
-    this.pServ.getProducts(searchString).subscribe({
+    this.selectedCategory = ''
+    // const input = document.getElementById('search_input') as HTMLInputElement;
+    // this.searchString = input!.value.trim().toLowerCase();
+    this.pServ.getProducts(this.searchString).subscribe({
       next: products => this.products = products,
       error: err => console.log(err)
     })
@@ -33,25 +36,39 @@ export class ProductsListComponent implements OnInit {
     })
   }
 
-  sortByPrice() {
-    this.products = this.products.sort((a, b) => a.price - b.price);
+  orderByPrice() {
+    // this.products = this.products.sort((a, b) => a.price - b.price); esercizio
+    this.products.sort((p1, p2) => p1.price-p2.price)
   }
 
-  sortByname() {
-    this.products = this.products.sort((a, b) => a.name.localeCompare(b.name) ) 
+  orderByname() {
+    // this.products = this.products.sort((a, b) => a.name.localeCompare(b.name) ) esercizio
+    this.products.sort((p1, p2) => p1.name.localeCompare(p2.name))
   }
 
-  displayCategory(){
-    const selector = document.getElementById('selector') as HTMLSelectElement;
-    const value = selector.value
-    if(value === 'all') this.getAllProducts()
-    else {
-      this.pServ.getProducts(undefined, value).subscribe({
-        next: products => this.products = products,
-        error: err => console.log(err)
-      })
-    }
+  filterByCategory(){
+    // const selector = document.getElementById('category-selector') as HTMLSelectElement;
+    // const value = selector.value
+    // if(value === 'all') this.getAllProducts()
+    // else {
+    //   this.pServ.getProducts(undefined, value).subscribe({
+    //     next: products => this.products = products,
+    //     error: err => console.log(err)
+    //   })
+    // }
+
+   
+    
+  
+
+
+    this.searchString = ''
+    this.pServ.getProducts(undefined, this.selectedCategory).subscribe({
+      next: products => this.products = products,
+      error: err => console.log(err)
+    })
+  }
   }
 
-}
-
+  
+  

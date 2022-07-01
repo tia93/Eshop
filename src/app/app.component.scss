@@ -10,3 +10,18 @@ background-color: black;
 color: aliceblue;
 padding: 16px;
 }
+
+nav{
+    display: flex;
+    gap: 8px;
+   
+}
+
+nav a {
+    color: rgb(27, 27, 27);
+    font-size: large ;
+   padding: 5px;
+   border: solid rgb(45, 44, 44);
+   border-radius: 10px;
+    
+}
