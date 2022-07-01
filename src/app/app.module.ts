@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { ProductsListComponent } from './componet/products-list/products-list.component';
 import { ProductCardsComponent } from './componet/product-cards/product-cards.component';
 import { ProductDetailComponent } from './componet/product-detail/product-detail.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './componet/login/login.component';
 import { RegisterComponent } from './componet/register/register.component';
 import { UserDetailComponent } from './componet/user-detail/user-detail.component';
@@ -27,6 +27,7 @@ import { UserDetailComponent } from './componet/user-detail/user-detail.componen
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

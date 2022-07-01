@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -7,6 +8,7 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./user-detail.component.scss']
 })
 export class UserDetailComponent implements OnInit {
+  
 
   constructor(public userS: UserService) { }
 

@@ -35,4 +35,7 @@ export class UserService {
   logout(){
     this.user = undefined
   }
+  register(user: User){
+    this.router.navigate(['/login'])
+  }
 }
